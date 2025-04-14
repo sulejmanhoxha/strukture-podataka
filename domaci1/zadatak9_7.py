@@ -31,6 +31,32 @@ def ukupan_prosjek(studenti: DoublyLinkedList, godina: int) -> float:
     return prosjek / count
 
 
+def obrnuti_elementi_od_indeksa(lista: DoublyLinkedList, indeks: int) -> DoublyLinkedList:
+    """
+    Funkcija koja vraca listu sa elementima koji se pojavljuju prije zadatog indeksa u obrnutom poretku.
+
+    Args:
+        lista (DoublyLinkedList): Dvostruko olančanu listu.
+        indeks (int): Indeks elementa
+
+    Returns:
+        lista (DoublyLinkedList): Dvostruko olančanu listu.
+    """
+    current = lista.head
+    count = 1
+    new_list = DoublyLinkedList()
+
+    while current:
+        if count == indeks:
+            break
+
+        new_list.append(Node(current.value))
+        current = current.next
+        count = count + 1
+
+    return new_list
+
+
 strudenti = DoublyLinkedList()
 
 student1 = Node({"ime": "Ivan", "prezime": "Petrovic", "godina": 2000, "prosjek": 8.5})
@@ -58,3 +84,18 @@ strudenti.append(student10)
 
 print("Prosjek studenata za godinu vecu od 2008:")
 print(ukupan_prosjek(strudenti, 2008))
+
+
+l1 = DoublyLinkedList()
+l1.append(Node(2))
+l1.append(Node(4))
+l1.append(Node(6))
+l1.append(Node(8))
+l1.append(Node(10))
+
+print("\nOriginalnaa lista:")
+l1.print_list()
+
+print("Obrnuti elementi od indeksa 3:")
+lista = obrnuti_elementi_od_indeksa(l1, 3)
+lista.print_list_reversed()
