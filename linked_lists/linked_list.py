@@ -9,12 +9,12 @@ class LinkedList:
         self.head = head
 
     def prepend(self, new_element):
-        ''' adds a node to the beginning of the list '''
+        """adds a node to the beginning of the list"""
         new_element.next = self.head
         self.head = new_element
 
     def append(self, new_element):
-        '''adds a node to the end of the list'''
+        """adds a node to the end of the list"""
         current = self.head
         if self.head:
             while current.next:
@@ -24,7 +24,7 @@ class LinkedList:
             self.head = new_element
 
     def find_maximum_value(self):
-        '''returns the highest(maximum) value of the list'''
+        """returns the highest(maximum) value of the list"""
         current = self.head
         maksimum = current.value
         while current:
@@ -35,11 +35,11 @@ class LinkedList:
         return maksimum
 
     def delete_node_with_max_value(self):
-        '''deletes the node with the highest value'''
+        """deletes the node with the highest value"""
         self.delete_value(self.find_maximum_value())
 
     def find_minimum_value(self):
-        '''returns the lowest(minimum) value of the list'''
+        """returns the lowest(minimum) value of the list"""
         current = self.head
         minimum = current.value
         while current:
@@ -49,24 +49,24 @@ class LinkedList:
         return minimum
 
     def delete_node_with_min_value(self):
-        '''deletes the node with the lowest(minimum) value'''
+        """deletes the node with the lowest(minimum) value"""
         self.delete_value(self.find_minimum_value())
 
     def square_every_value(self):
-        '''squares the value of every node in the list'''
+        """squares the value of every node in the list"""
         current = self.head
         while current:
             current.value = current.value * current.value
             current = current.next
 
     def delete_first(self):
-        ''' deletes the first node of the list'''
+        """deletes the first node of the list"""
         if not self.head:
             return None
         self.head = self.head.next
 
     def delete_last(self):
-        '''deletes the last node of the list'''
+        """deletes the last node of the list"""
         current = self.head
         while current.next:
             prev = current
@@ -74,7 +74,7 @@ class LinkedList:
         prev.next = None
 
     def get_value_from_position(self, position):
-        '''returns the node from the specified position'''
+        """returns the node from the specified position"""
         counter = 1
         current = self.head
         if position < 1:
@@ -87,7 +87,7 @@ class LinkedList:
         return None
 
     def insert_on_position(self, new_element, position):
-        ''' nserts a node in the specified position'''
+        """nserts a node in the specified position"""
         counter = 1
         current = self.head
         if position > 1:
@@ -104,7 +104,7 @@ class LinkedList:
             return None
 
     def delete_value(self, value):
-        ''' deletes a node if it's value is equal to the value parameter '''
+        """deletes a node if it's value is equal to the value parameter"""
         current = self.head
         prev = None
         while current.value != value and current.next:
@@ -118,7 +118,7 @@ class LinkedList:
                 self.head = current.next
 
     def delete_from_position(self, position):
-        '''deletes a value that is in the specified position'''
+        """deletes a value that is in the specified position"""
         current = self.head
         prev = None
         counter = 1
@@ -139,7 +139,7 @@ class LinkedList:
         current = None
 
     def length_iterative(self):
-        '''returns the length of the list. this is the iterative version'''
+        """returns the length of the list. this is the iterative version"""
         count = 0
         current = self.head
 
@@ -150,25 +150,25 @@ class LinkedList:
         return count
 
     def length(self):
-        '''returns the length of the list. this is the recursive version'''
+        """returns the length of the list. this is the recursive version"""
         return self.length_recursive(self.head)
 
     def length_recursive(self, node):
-        '''call the length function not this. otherwise give list head as the argument'''
+        """call the length function not this. otherwise give list head as the argument"""
         if not node:
             return 0
         else:
             return 1 + self.length_recursive(node.next)
 
     def print_list_2(self):
-        '''prints the list vertically'''
+        """prints the list vertically"""
         current = self.head
         while current:
             print(current.value)
             current = current.next
 
     def print_list(self):
-        '''prints the list as one line'''
+        """prints the list as one line"""
         current = self.head
         string = "[ "
         while current:
@@ -181,7 +181,7 @@ class LinkedList:
         print(string)
 
     def concat(self, other):
-        '''concatenates/joins two lists'''
+        """concatenates/joins two lists"""
         current = self.head
         while current.next:
             current = current.next
@@ -189,7 +189,7 @@ class LinkedList:
         current.next = other.head
 
     def delete_every_second_node(self):
-        '''deletes every second node of the list. begins from the second node [5,3,4,9] - result: [5,4]'''
+        """deletes every second node of the list. begins from the second node [5,3,4,9] - result: [5,4]"""
         current = self.head
         while current.next:
             if current.next.next is None:
@@ -203,7 +203,7 @@ class LinkedList:
     # 2. r)
 
     def negatives_left_positives_right(self):
-        '''creates a new list with negative values on the left and positive values on the right. *THE LIST IS NOT SORTED*'''
+        """creates a new list with negative values on the left and positive values on the right. *THE LIST IS NOT SORTED*"""
         l1 = LinkedList()
         current = self.head
         while current:
@@ -223,7 +223,7 @@ class LinkedList:
         l1.print_list()
 
     def check_if_exists(self, value):
-        '''returns true if a value is found on the list, returns false otherwise'''
+        """returns true if a value is found on the list, returns false otherwise"""
         current = self.head
         while current:
             if current.value == value:
@@ -233,7 +233,7 @@ class LinkedList:
 
     # 2t
     def count_nodes_greater_than(self, num):
-        '''counts the number of nodes with values higher than the given argument'''
+        """counts the number of nodes with values higher than the given argument"""
         current = self.head
         count = 0
         while current:
@@ -244,7 +244,7 @@ class LinkedList:
 
     # 2v
     def union(self, l2):
-        '''creates a new list, union(math) between the called list and the argument list'''
+        """creates a new list, union(math) between the called list and the argument list"""
         current = self.head
         l3 = LinkedList()
         unique_values = set()
@@ -266,7 +266,7 @@ class LinkedList:
         return l3
 
     def intersection(self, l2):
-        '''returns a new list with only the nodes that have the same value on both lists the called list and the argument list'''
+        """returns a new list with only the nodes that have the same value on both lists the called list and the argument list"""
         unique_values = set()
         l3 = LinkedList()
         current = self.head
@@ -285,7 +285,7 @@ class LinkedList:
         return l3
 
     def squares_even_values(self):
-        '''Returns a linked list made of only nodes that have even (tek) numbers and then squares them, from the called list'''
+        """Returns a linked list made of only nodes that have even (tek) numbers and then squares them, from the called list"""
         lista2 = LinkedList()
         current = self.head
         while current:
@@ -296,10 +296,10 @@ class LinkedList:
         return lista2
 
     def square_every_second_node(self):
-        '''Returns a new list, containing every second squared node from the called list. Begins from the first node.
+        """Returns a new list, containing every second squared node from the called list. Begins from the first node.
 
         [2, 5, 8, 3, 7] - [4, 64, 49]
-         '''
+        """
         lista2 = LinkedList()
         current = self.head
         while current:
@@ -313,7 +313,7 @@ class LinkedList:
         return lista2
 
     def reverse(self):
-        '''reverses a list'''
+        """reverses a list"""
         prev = None
         current = self.head
         while current is not None:
@@ -335,37 +335,3 @@ class LinkedList:
                 c1 = c1.next
                 c2 = c2.next
             return True
-
-
-l1 = LinkedList()
-l1.append(Node(5))
-l1.append(Node(4))
-l1.append(Node(-4))
-l1.append(Node(8))
-l1.append(Node(-3))
-l1.append(Node(0))
-l1.append(Node(2))
-l1.append(Node(2))
-
-l3 = LinkedList()
-l3.append(Node(5))
-l3.append(Node(4))
-l3.append(Node(-4))
-l3.append(Node(8))
-l3.append(Node(-3))
-l3.append(Node(0))
-l3.append(Node(2))
-l3.append(Node(2))
-
-# l2 = LinkedList()
-# l2.append(Node(100))
-# l2.append(Node(8))
-# l2.append(Node(200))
-# l2.append(Node(4))
-
-
-l1.print_list()
-l3.print_list()
-l1.concat(l3)
-l1.print_list()
-l3.print_list()
