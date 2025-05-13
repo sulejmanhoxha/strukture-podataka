@@ -6,7 +6,7 @@ import sys
 # Add the parent directory to the Python path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from linked_lists.doubly_linked_list import DoublyLinkedList, Node
+from data_structures.linked_lists.doubly_linked_list import DoublyLinkedList, Node
 
 l1 = DoublyLinkedList()
 l1.append(Node(5))

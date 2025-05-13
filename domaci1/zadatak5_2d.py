@@ -4,7 +4,7 @@ import sys
 # Add the parent directory to the Python path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from linked_lists.linked_list import LinkedList, Node
+from data_structures.linked_lists.linked_list import LinkedList, Node
 
 
 def remove_every_third_element(linked_list):
