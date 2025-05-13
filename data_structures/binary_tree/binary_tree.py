@@ -252,25 +252,25 @@ class BinaryTree:
 # postorder: 1. left , right, parent :   shken ke leaf ma i majti qi isht(left.left.left ......)   masanej [  ↘ ↖  ]
 # (\  \  \  \) . shken si \ vetem se fillen prej nelt posht, e njitet ke \ tjeter par prej posht nelt
 # BFS - LevelOrder shken rresht per rresht, prej majtas djathtas dmth komplet horizontal
-bin_tree = BinaryTree(6)
+# bin_tree = BinaryTree(6)
 
-bin_tree.insert(3)
-bin_tree.insert(7)
-bin_tree.insert(2)
-bin_tree.insert(5)
-bin_tree.insert(9)
+# bin_tree.insert(3)
+# bin_tree.insert(7)
+# bin_tree.insert(2)
+# bin_tree.insert(5)
+# bin_tree.insert(9)
 
-print(bin_tree.print_tree("preorder"))
-print(bin_tree.print_tree("postorder"))
-print(bin_tree.print_tree("inorder"))
-# print(bin_tree.print_tree("levelorder"))
-print(bin_tree.find(10))
-print(bin_tree.min().value)
+# print(bin_tree.print_tree("preorder"))
+# print(bin_tree.print_tree("postorder"))
+# print(bin_tree.print_tree("inorder"))
+# # print(bin_tree.print_tree("levelorder"))
+# print(bin_tree.find(10))
+# print(bin_tree.min().value)
 
-bin_tree.delete_node(bin_tree.root, 7)
-print(bin_tree.print_tree("preorder"))
-print(bin_tree.size())
-print(bin_tree.get_num_of_leaf())
+# bin_tree.delete_node(bin_tree.root, 7)
+# print(bin_tree.print_tree("preorder"))
+# print(bin_tree.size())
+# print(bin_tree.get_num_of_leaf())
 
 
 # print(bin_tree.preorder_print_2(bin_tree.root))
