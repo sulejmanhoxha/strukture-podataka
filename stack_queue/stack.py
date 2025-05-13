@@ -140,37 +140,3 @@ class Stack:
 # reverse_stack(r)
 # print(r.get_stack())
 # print(remove_duplicates(r).get_stack())
-
-
-s1 = Stack()
-s1.push(5)
-s1.push(2)
-s1.push(4)
-s1.push(4)
-s1.push(5)
-s1.push(7)
-s1.push(4)
-s1.push(9)
-s1.push(7)
-
-s1.print_stack()
-
-s1 = s1.remove_value_from_stack(5)
-
-s1.print_stack()
-
-
-s2 = Stack()
-s2.push(4)
-s2.push(5)
-s2.push(7)
-s2.push(4)
-s2.push(2)
-s2.push(9)
-s2.push(4)
-s2.push(7)
-s2.push(5)
-
-# s2.print_stack()
-
-# Stack.convert_to_binary(276)
