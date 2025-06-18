@@ -246,8 +246,43 @@ class BinaryTree:
             else:
                 return self._get_num_of_leaf(current.left) + self._get_num_of_leaf(current.right)
 
-    def num_not_leaf():
-        pass
+    def max_recursive(self, current):
+        if current and current.right:
+            return self.max_recursive(current.right)
+        else:
+            return current.value
+
+    def max_iterative(self, node):
+        current = node
+        while current.right:
+            current = current.right
+        return current
+
+    def max(self, type="recursive"):
+        if type == "recursive":
+            return self.max_recursive(self.root)
+        elif type == "iterative":
+            return self.max_iterative(self.root)
+        else:
+            return "Invalid type!"
+
+    def get_num_of_not_leaf(self):
+        return self._get_num_of_not_leaf(self.root)
+
+    def _get_num_of_not_leaf(self, current):
+        if not current:
+            return 0
+        else:
+            if current.left or current.right:
+                return 1 + self._get_num_of_not_leaf(current.left) + self._get_num_of_not_leaf(current.right)
+            else:
+                return 0
+
+    def number_of_not_leaves(self):
+        if self.root:
+            return self.number_of_not_leaves(self.root.left) + self.number_of_not_leaves(self.root.right) + 1
+        else:
+            return 0
 
 
 # DFS

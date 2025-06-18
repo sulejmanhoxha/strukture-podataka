@@ -62,9 +62,6 @@ class Stack:
         for i in s:
             self.push(i)
 
-        # self.print_stack()
-
-    # e kam nru code te detyres bombe
     def remove_value_from_stack(self, value):
         """removes a value from the stack"""
         cisti_stek = Stack()
@@ -77,8 +74,6 @@ class Stack:
                 cisti_stek.push(element)
         cisti_stek.reverse()
         return cisti_stek
-        # print("Ocisceni stek: " + str(cisti_stek.get_stack_items()) +
-        #       " ---> Broj bombi u steku:" + str(counter))
 
     @staticmethod
     def convert_to_binary(broj):

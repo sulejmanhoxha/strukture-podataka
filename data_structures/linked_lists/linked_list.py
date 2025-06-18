@@ -73,6 +73,20 @@ class LinkedList:
             current = current.next
         prev.next = None
 
+    def remove_every_third_element(linked_list):
+        """deletes every third element of the list"""
+        if not linked_list.head or not linked_list.head.next:
+            return linked_list
+
+        current = linked_list.head
+        while current and current.next:
+            if current.next.next is None or current.next.next.next is None:
+                current.next = None
+                break
+            else:
+                current.next = current.next.next.next
+                current = current.next
+
     def get_value_from_position(self, position):
         """returns the node from the specified position"""
         counter = 1

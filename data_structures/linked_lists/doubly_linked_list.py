@@ -163,27 +163,6 @@ class DoublyLinkedList:
         current.next = n
         n.prev = current
 
-    #     1. U  dvostruko  povezanu  listu  smještaju  se  cjelobrojni  podaci.
-    # Napisati funkciju izbaciN (head, tail, N), head pokazivac na prvi,
-    # a tail pokazivac na poslednji element liste, N broj elemenata liste,
-    # koja će iz liste izbaciti zadnjih N elemenata. Ako u listi ima
-    # manje od N elemenata, funkcija ih treba izbaciti sve. Funkcija
-    # treba vratiti broj izbacenih elemenata
-
-    # un
-    # def izbaciN(head, tail, N):
-    #     current = head
-    #     counter = 0
-    #     while counter < N and current != tail:
-    #         counter = counter + 1
-    #         current = current.next
-
-    #     if counter != N:
-    #         head = None
-    #         print("Lista ima manje od N elemenata")
-    #     else:
-    #         current.next = tail
-    # profi (dopt)
     def izbaci(self, N):
         p = 0
         if N >= self.duzina():
@@ -242,34 +221,3 @@ class DoublyLinkedList:
                 current.next.prev = current.prev
 
             current = current.next
-
-
-# knjige = DoublyLinkedList()
-
-# knjige = DoublyLinkedList()
-# knjiga1 = Node({"idk": 1, "nk": "Stranac", "ida": 5, "cijena": 5})
-# knjiga2 = Node({"idk": 2, "nk": "Zlocin i kazna", "ida": 3, "cijena": 10})
-# knjiga3 = Node({"idk": 3, "nk": "Ana Karenjina", "ida": 7, "cijena": 15})
-# knjiga4 = Node({"idk": 4, "nk": "Zapisi iz podzemlja", "ida": 3, "cijena": 12})
-# knjiga5 = Node({"idk": 5, "nk": "Humankind", "ida": 8, "cijena": 13})
-
-# knjige.append_sort(knjiga1)
-# knjige.append_sort(knjiga2)
-# knjige.append_sort(knjiga3)
-# knjige.append_sort(knjiga4)
-# knjige.append_sort(knjiga5)
-# knjige.print_list()
-
-# l1 = DoublyLinkedList()
-# l1.append(Node(1))
-# l1.append(Node(2))
-# l1.append(Node(3))
-# l1.append(Node(5))
-# l1.append(Node(5))
-# l1.append(Node(6))
-# l1.append(Node(7))
-# l1.append(Node(8))
-
-
-# l1.print_list()
-# l1.print_list_reversed()
