@@ -1,4 +1,4 @@
-from data_structures.graph.graph import Graph
+from src.data_structures.graph.graph import Graph
 
 
 def je_boja_valjana(cvor_idx, boja, graf_adj, boje_cvorova):

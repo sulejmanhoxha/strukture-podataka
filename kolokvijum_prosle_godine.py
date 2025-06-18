@@ -1,5 +1,5 @@
-from data_structures.linked_lists.doubly_linked_list import DoublyLinkedList, Node
-from data_structures.linked_lists.linked_list import LinkedList, Node
+from src.data_structures.linked_lists.doubly_linked_list import DoublyLinkedList, Node
+from src.data_structures.linked_lists.linked_list import LinkedList, Node
 
 
 def nadi_veliko_slovo_poslednju(string: str):

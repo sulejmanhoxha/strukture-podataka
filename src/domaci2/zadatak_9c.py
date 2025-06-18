@@ -5,7 +5,7 @@
 # Na primjer, ako su elementi u S1 bili (3, 1, 4, 1, 2, 6) onda nakon
 # poziva funkcije treba biti S1=(4, 2, 6) i S2=(3, 1, 1)
 
-from data_structures.stack_queue.stack import Stack
+from src.data_structures.stack_queue.stack import Stack
 
 s1 = Stack()
 s1.push(3)

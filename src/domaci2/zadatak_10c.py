@@ -7,7 +7,7 @@
 # čvorova binarnog stabla koji nisu list (eng. leaf). (pomoć:
 # broj_čvorova_drveta - broj_leaf_čvorova)
 
-from data_structures.binary_tree.binary_tree import BinaryTree, Node
+from src.data_structures.binary_tree.binary_tree import BinaryTree, Node
 
 
 class BinaryTree2(BinaryTree):

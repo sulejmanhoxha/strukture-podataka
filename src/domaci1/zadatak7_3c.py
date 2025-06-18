@@ -1,4 +1,4 @@
-from data_structures.linked_lists.doubly_linked_list import DoublyLinkedList, Node
+from src.data_structures.linked_lists.doubly_linked_list import DoublyLinkedList, Node
 
 l1 = DoublyLinkedList()
 l1.append(Node(5))

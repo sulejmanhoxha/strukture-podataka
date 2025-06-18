@@ -17,7 +17,7 @@
 # do polaznog stajališta) ispisati trasu tramvaja. Smatra se da će tramvaj
 # u nekom trenutku sigurno završiti smjenu.
 
-from data_structures.linked_lists.circular_list import CircularLinkedList, Node
+from src.data_structures.linked_lists.circular_list import CircularLinkedList, Node
 
 
 class TramStop:
