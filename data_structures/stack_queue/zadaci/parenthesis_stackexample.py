@@ -13,7 +13,7 @@ Non-Balanced Example: ))
 """
 
 # sdi a punen , vet e kam ba
-from stack import Stack
+from data_structures.stack_queue.stack import Stack
 
 
 def is_match(p1, p2):

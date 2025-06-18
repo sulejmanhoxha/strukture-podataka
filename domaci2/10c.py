@@ -7,11 +7,6 @@
 # čvorova binarnog stabla koji nisu list (eng. leaf). (pomoć:
 # broj_čvorova_drveta - broj_leaf_čvorova)
 
-import os
-import sys
-
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
 from data_structures.binary_tree.binary_tree import BinaryTree, Node
 
 

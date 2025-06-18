@@ -17,11 +17,6 @@
 # do polaznog stajališta) ispisati trasu tramvaja. Smatra se da će tramvaj
 # u nekom trenutku sigurno završiti smjenu.
 
-import os
-import sys
-
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
 from data_structures.linked_lists.circular_list import CircularLinkedList, Node
 
 
