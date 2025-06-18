@@ -1,4 +1,4 @@
-from data_structures.linked_lists.linked_list import LinkedList, Node
+from src.data_structures.linked_lists.linked_list import LinkedList, Node
 
 
 def test_append():
