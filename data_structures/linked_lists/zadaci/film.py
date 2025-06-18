@@ -16,10 +16,9 @@
 # d. Sve funkcije je potrebno pozvati i testirati za bar 5 filmova.
 
 
-class MoivieNode():
+class MoivieNode:
     def __init__(self, name, genre, year, rating):
-        self.movie = {'name': name, 'genre': genre,
-                      'year': year, 'rating': rating}
+        self.movie = {"name": name, "genre": genre, "year": year, "rating": rating}
 
 
 class LinkedListFilms:
@@ -49,20 +48,20 @@ class LinkedListFilms:
         count = 0
         sum_rate = 0
         while current:
-            if current.movie['year'] == year:
+            if current.movie["year"] == year:
                 count = count + 1
-                sum_rate = sum_rate + current.movie['rating']
-#                 print(current.movie)
+                sum_rate = sum_rate + current.movie["rating"]
+            #                 print(current.movie)
             current = current.next
         if count != 0:
-            return sum_rate/count
+            return sum_rate / count
         else:
             return None
 
     def print_movies_greater_than(self, min_year):
         current = self.head
         while current:
-            if current.movie['year'] >= min_year:
+            if current.movie["year"] >= min_year:
                 print(current.movie)
             current = current.next
 
@@ -70,19 +69,19 @@ class LinkedListFilms:
         current = self.head
         count = 0
         while current:
-            if current.movie['genre'] == genre:
+            if current.movie["genre"] == genre:
                 #                 print(current.movie)
                 count = count + 1
             current = current.next
         return count
 
 
-n1 = MoivieNode('The Batman', 'drama', 2022, 8.1)
-n2 = MoivieNode('Joker', 'drama', 2019, 8.4)
-n3 = MoivieNode('Dune', 'action', 2021, 8.1)
-n4 = MoivieNode('The Shawshank Redemption', 'drama', 1994, 9.3)
-n5 = MoivieNode("39. Don't Look Up", 'comedy', 2021, 7.2)
-n6 = MoivieNode('Once Upon a Time... In Hollywood ', 'comedy', 2019, 7.6)
+n1 = MoivieNode("The Batman", "drama", 2022, 8.1)
+n2 = MoivieNode("Joker", "drama", 2019, 8.4)
+n3 = MoivieNode("Dune", "action", 2021, 8.1)
+n4 = MoivieNode("The Shawshank Redemption", "drama", 1994, 9.3)
+n5 = MoivieNode("39. Don't Look Up", "comedy", 2021, 7.2)
+n6 = MoivieNode("Once Upon a Time... In Hollywood ", "comedy", 2019, 7.6)
 
 movies_list = LinkedListFilms()
 movies_list.append(n1)
@@ -101,4 +100,4 @@ print("**********")
 movies_list.print_movies_greater_than(2005)
 print("**********")
 # C)
-print(movies_list.genre_count('drama'))
+print(movies_list.genre_count("drama"))

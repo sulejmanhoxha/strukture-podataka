@@ -15,14 +15,14 @@ class DoublyLinkedList:
     #     self.tail = tail
 
     def print_list_2(self):
-        '''prints the list vertically'''
+        """prints the list vertically"""
         current = self.head
         while current:
             print(current.value)
             current = current.next
 
     def print_list(self):
-        '''prints the list in one line'''
+        """prints the list in one line"""
         current = self.head
         string = "[ "
         while current:
@@ -35,7 +35,7 @@ class DoublyLinkedList:
         print(string)
 
     def print_list_reversed_2(self):
-        '''prints the list in reverse order vertically'''
+        """prints the list in reverse order vertically"""
         current = self.head
         while current.next:
             current = current.next
@@ -45,11 +45,11 @@ class DoublyLinkedList:
             current = current.prev
 
     def print_list_reversed(self):
-        '''print the list in reverse order in one line'''
+        """print the list in reverse order in one line"""
         current = self.head
         while current.next:
             current = current.next
-        string = 'Reversed list: [ '
+        string = "Reversed list: [ "
         while current:
             if current.prev is None:
                 string = string + str(current.value) + " ]"
@@ -60,7 +60,7 @@ class DoublyLinkedList:
         print(string)
 
     def prepend(self, new_node):
-        '''adds a node to the beginning of the list'''
+        """adds a node to the beginning of the list"""
         if self.head is None:
             self.head = new_node
             return
@@ -69,7 +69,7 @@ class DoublyLinkedList:
         self.head = new_node
 
     def append(self, new_node):
-        '''adds a node to the end of the list'''
+        """adds a node to the end of the list"""
         if self.head is None:
             self.head = new_node
             return
@@ -81,7 +81,7 @@ class DoublyLinkedList:
         new_node.next = None
 
     def delete_first(self):
-        '''deletes the first node'''
+        """deletes the first node"""
         if self.head is None:
             return
         if self.head.next is None:
@@ -91,7 +91,7 @@ class DoublyLinkedList:
         self.prev = None
 
     def delete_last(self):
-        '''deletes the last element of the list'''
+        """deletes the last element of the list"""
         if self.head is None:
             return
 
@@ -106,7 +106,7 @@ class DoublyLinkedList:
         current.prev.next = None
 
     def get_middle_node(self):
-        '''returns the middle node of the list'''
+        """returns the middle node of the list"""
         current_1 = self.head
         current_2 = self.head
 
@@ -117,7 +117,7 @@ class DoublyLinkedList:
         return current_2
 
     def __eq__(self, other):
-        '''returns True if the lists are the same, False otherwise'''
+        """returns True if the lists are the same, False otherwise"""
         current_1 = self.head
         current_2 = other.head
         while current_1 and current_2:
@@ -133,7 +133,7 @@ class DoublyLinkedList:
             return False
 
     def intersection(self, l2):
-        '''returns a new list with only the nodes that have the same value on both lists the called list and the argument list'''
+        """returns a new list with only the nodes that have the same value on both lists the called list and the argument list"""
         current_1 = self.head
         l3 = DoublyLinkedList()
         while current_1:
@@ -146,7 +146,7 @@ class DoublyLinkedList:
         l3.print_list()
 
     def append_sort(self, n):
-        '''works only for the knjigja example or if we have dictionaries with key cijena'''
+        """works only for the knjigja example or if we have dictionaries with key cijena"""
         current = self.head
         if current == None or n.value["cijena"] < current.value["cijena"]:
             self.prepend(n)
@@ -163,12 +163,12 @@ class DoublyLinkedList:
         current.next = n
         n.prev = current
 
-#     1. U  dvostruko  povezanu  listu  smještaju  se  cjelobrojni  podaci.
-# Napisati funkciju izbaciN (head, tail, N), head pokazivac na prvi,
-# a tail pokazivac na poslednji element liste, N broj elemenata liste,
-# koja će iz liste izbaciti zadnjih N elemenata. Ako u listi ima
-# manje od N elemenata, funkcija ih treba izbaciti sve. Funkcija
-# treba vratiti broj izbacenih elemenata
+    #     1. U  dvostruko  povezanu  listu  smještaju  se  cjelobrojni  podaci.
+    # Napisati funkciju izbaciN (head, tail, N), head pokazivac na prvi,
+    # a tail pokazivac na poslednji element liste, N broj elemenata liste,
+    # koja će iz liste izbaciti zadnjih N elemenata. Ako u listi ima
+    # manje od N elemenata, funkcija ih treba izbaciti sve. Funkcija
+    # treba vratiti broj izbacenih elemenata
 
     # un
     # def izbaciN(head, tail, N):
@@ -187,11 +187,11 @@ class DoublyLinkedList:
     def izbaci(self, N):
         p = 0
         if N >= self.duzina():
-            while (self.head != None):
+            while self.head != None:
                 temp = self.head
                 self.head = self.head.next
                 temp = None
-                p = p+1
+                p = p + 1
             return p
         else:
             n = 0
@@ -205,7 +205,7 @@ class DoublyLinkedList:
                     current = current.next
                 current.prev.next = None
                 current.prev = None
-                n = n+1
+                n = n + 1
 
             return n
 

@@ -10,7 +10,7 @@ import sys
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from stack_queue.stack import Stack
+from data_structures.stack_queue.stack import Stack
 
 s1 = Stack()
 s1.push(3)

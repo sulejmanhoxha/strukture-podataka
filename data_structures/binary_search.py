@@ -31,10 +31,10 @@ def binary_search_recursive(data, target, low, high):
         elif target < data[mid]:
             return binary_search_recursive(data, target, low, mid - 1)
         else:
-            return binary_search_recursive(data, target, mid+1, high)
+            return binary_search_recursive(data, target, mid + 1, high)
 
 
 data = [10, 20, 30, 40, 50, 100]
 target = 30
 print(binary_search(data, target))
-print(binary_search_recursive(data, target, 0, len(data)-1))
+print(binary_search_recursive(data, target, 0, len(data) - 1))

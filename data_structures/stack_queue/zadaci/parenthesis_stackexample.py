@@ -1,4 +1,4 @@
-'''
+"""
 Use a stack to check whether or not a string
 has balanced usage of parenthesis.
 Example:
@@ -10,8 +10,7 @@ Balanced Exanple: {[]}
 Non-Balanced Exanple: (()
 Non-Balanced Example: ))
 
-'''
-
+"""
 
 # sdi a punen , vet e kam ba
 from stack import Stack

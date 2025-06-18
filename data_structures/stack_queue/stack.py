@@ -3,36 +3,36 @@ class Stack:
         self.items = []
 
     def push(self, item):
-        '''adds item to stack'''
+        """adds item to stack"""
         return self.items.append(item)
 
     def pop(self):
-        '''return the last item in stack but also removes it from the stack'''
+        """return the last item in stack but also removes it from the stack"""
         if not self.is_empty():
             return self.items.pop()
 
     def is_empty(self):
-        '''returns true if stack is empty, otherwise false'''
+        """returns true if stack is empty, otherwise false"""
         return len(self.items) == 0
 
     def peek(self):
-        '''returns the last item in stack but it doesnt remove it from the stack'''
+        """returns the last item in stack but it doesnt remove it from the stack"""
         if not self.is_empty():
             return self.items[-1]
 
     def get_stack_items(self):
-        '''return the items of the stack'''
+        """return the items of the stack"""
         return self.items
 
     def print_stack(self):
-        '''prints the stack'''
+        """prints the stack"""
         print(self.get_stack_items())
 
     def divide_odd_even(self, oddStack, evenStack):
-        '''places the elements that have odd numbers(value) to the oddStack, and the other even numbered elements to the evenStack.
+        """places the elements that have odd numbers(value) to the oddStack, and the other even numbered elements to the evenStack.
 
         *** Removes all elements of the called stack ***
-        '''
+        """
         while self.is_empty() is not True:
             if self.peek() % 2 == 0:
                 oddStack.push(self.pop())
@@ -40,7 +40,7 @@ class Stack:
                 evenStack.push(self.pop())
 
     def create_copy_of_stack(self):
-        '''returns a copy of the called stack'''
+        """returns a copy of the called stack"""
         copy = Stack()
         temp = self.get_stack_items()
 
@@ -51,10 +51,10 @@ class Stack:
         return copy
 
     def reverse(self):
-        '''reverses a stack
+        """reverses a stack
 
         *** Does not create a new stack.
-        '''
+        """
         s = []
         while self.is_empty() is not True:
             s.append(self.pop())
@@ -66,7 +66,7 @@ class Stack:
 
     # e kam nru code te detyres bombe
     def remove_value_from_stack(self, value):
-        '''removes a value from the stack'''
+        """removes a value from the stack"""
         cisti_stek = Stack()
         counter = 0
         while not self.is_empty():
@@ -82,24 +82,24 @@ class Stack:
 
     @staticmethod
     def convert_to_binary(broj):
-        '''converts a number to its binary representation'''
+        """converts a number to its binary representation"""
         stack = Stack()
         while broj > 0:
             reminder = broj % 2
             stack.push(reminder)
-            broj = broj//2
+            broj = broj // 2
         binarni_broj = ""
         while not stack.is_empty():
-            binarni_broj = binarni_broj+str(stack.pop())
+            binarni_broj = binarni_broj + str(stack.pop())
 
         print(binarni_broj)
         return binarni_broj
 
     def parnepar(self, s2):
-        '''creates and returns two stacks, one with even and one with odd numbers.
+        """creates and returns two stacks, one with even and one with odd numbers.
 
         *** The called stack will be empty ***
-        '''
+        """
         s1 = Stack()
         while not self.is_empty():
             element = self.pop()
@@ -108,6 +108,7 @@ class Stack:
             else:
                 s2.push(element)
         return s1, s2
+
 
 # def remove_duplicates_in_pair(s):
 #     res = Stack()

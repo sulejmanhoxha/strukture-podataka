@@ -1,7 +1,7 @@
 def merge_sort(arr):
     if len(arr) > 1:
         # Trazenje srednjeg elementa niza, tj indeksa
-        mid = len(arr)//2
+        mid = len(arr) // 2
 
         # dio za split
         L = arr[:mid]

@@ -1,13 +1,3 @@
-# # some_file.py
-# import sys
-# sys.path.append('/home/manoh/Visual Studio Code Projects/Strukture_Podataka_I_Algoritmi/strukture_podataka/stack_queue')
-# # sys.path.insert(
-# #     1, '/home/manoh/Visual Studio Code Projects/Strukture_Podataka_I_Algoritmi/strukture_podataka/stack_queue')
-
-# import queue
-# # from Strukture_Podataka_I_Algoritmi.strukture_podataka.stack_queue.queue import Queue
-
-
 class Node:
     def __init__(self, value):
         self.value = value
@@ -75,7 +65,7 @@ class BinaryTree:
     def najveca_zarada(self, current):
         while current.right:
             current = current.right
-        return current.value['ime']
+        return current.value["ime"]
 
     # nedelja 6
     def print_tree(self, traversal_type):
@@ -138,25 +128,37 @@ class BinaryTree:
             return 0
 
         if start.value > broj:
-            return 1 + self.prebroji_cvororva_koji_su_veci_od(start.left, broj) + self.prebroji_cvororva_koji_su_veci_od(start.right, broj)
+            return (
+                1
+                + self.prebroji_cvororva_koji_su_veci_od(start.left, broj)
+                + self.prebroji_cvororva_koji_su_veci_od(start.right, broj)
+            )
         else:
-            return self.prebroji_cvororva_koji_su_veci_od(start.left, broj) + self.prebroji_cvororva_koji_su_veci_od(start.right, broj)
+            return self.prebroji_cvororva_koji_su_veci_od(start.left, broj) + self.prebroji_cvororva_koji_su_veci_od(
+                start.right, broj
+            )
 
     def prebroji_cvororva_koji_su_veci_od_i_manji_od(self, start, broj1, broj2):
         if start is None:
             return 0
 
         if start.value > broj1 and start.value < broj2:
-            return 1 + self.prebroji_cvororva_koji_su_veci_od_i_manji_od(start.left, broj1, broj2) + self.prebroji_cvororva_koji_su_veci_od_i_manji_od(start.right, broj1, broj2)
+            return (
+                1
+                + self.prebroji_cvororva_koji_su_veci_od_i_manji_od(start.left, broj1, broj2)
+                + self.prebroji_cvororva_koji_su_veci_od_i_manji_od(start.right, broj1, broj2)
+            )
         else:
-            return self.prebroji_cvororva_koji_su_veci_od_i_manji_od(start.left, broj1, broj2) + self.prebroji_cvororva_koji_su_veci_od_i_manji_od(start.right, broj1, broj2)
+            return self.prebroji_cvororva_koji_su_veci_od_i_manji_od(
+                start.left, broj1, broj2
+            ) + self.prebroji_cvororva_koji_su_veci_od_i_manji_od(start.right, broj1, broj2)
 
     # kja funkcija nelt profi
     def range_count(self, current, low, high):
         if current == None:
             return 0
         if current.value < high and current.value > low:
-            return (1 + self.range_count(current.left, low, high) + self.range_count(current.left, low, high))
+            return 1 + self.range_count(current.left, low, high) + self.range_count(current.left, low, high)
         elif current.value < low:
             return self.range_count(current.right, low, high)
         else:
@@ -181,7 +183,9 @@ class BinaryTree:
             return ""
 
         # traversal = traversal + (str(start.value) + " -> ")
-        return str(start.value) + " -> " + str(self.preorder_print_2(start.left)) + str(self.preorder_print_2(start.right))
+        return (
+            str(start.value) + " -> " + str(self.preorder_print_2(start.left)) + str(self.preorder_print_2(start.right))
+        )
 
     # un prov
     def sum_of_values(self, start):

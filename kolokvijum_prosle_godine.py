@@ -1,8 +1,5 @@
-from linked_lists.linked_list import LinkedList
-from linked_lists.linked_list import Node
-
-from linked_lists.doubly_linked_list import DoublyLinkedList
-from linked_lists.doubly_linked_list import Node as Node2
+from data_structures.linked_lists.doubly_linked_list import DoublyLinkedList, Node
+from data_structures.linked_lists.linked_list import LinkedList, Node
 
 
 def nadi_veliko_slovo_poslednju(string: str):
@@ -76,16 +73,11 @@ def ukloni_svaki_drugi(l1: LinkedList):
 
 
 l2 = DoublyLinkedList()
-l2.append(Node({"ime": "mano1", "prezime": "hoxha1",
-          "godina": 2022, "prosjek": 7.0}))
-l2.append(Node({"ime": "mano2", "prezime": "hoxha2",
-          "godina": 2021, "prosjek": 5.6}))
-l2.append(Node({"ime": "mano3", "prezime": "hoxha3",
-          "godina": 2022, "prosjek": 8.0}))
-l2.append(Node({"ime": "mano5", "prezime": "hoxha4",
-          "godina": 2020, "prosjek": 8.6}))
-l2.append(Node({"ime": "mano6", "prezime": "hoxha5",
-          "godina": 2022, "prosjek": 9.0}))
+l2.append(Node({"ime": "mano1", "prezime": "hoxha1", "godina": 2022, "prosjek": 7.0}))
+l2.append(Node({"ime": "mano2", "prezime": "hoxha2", "godina": 2021, "prosjek": 5.6}))
+l2.append(Node({"ime": "mano3", "prezime": "hoxha3", "godina": 2022, "prosjek": 8.0}))
+l2.append(Node({"ime": "mano5", "prezime": "hoxha4", "godina": 2020, "prosjek": 8.6}))
+l2.append(Node({"ime": "mano6", "prezime": "hoxha5", "godina": 2022, "prosjek": 9.0}))
 
 l2.print_list()
 
@@ -104,6 +96,7 @@ def izracunaj_ukupan_prosjek_studenata_za_godinu(lista: DoublyLinkedList, godina
 
 
 # print(izracunaj_ukupan_prosjek_studenata_za_godinu(l2, 2022))
+
 
 def print_till_index(l1: DoublyLinkedList, index):
     current = l1.head
