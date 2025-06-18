@@ -214,8 +214,6 @@ class LinkedList:
 
         self.print_list()
 
-    # 2. r)
-
     def negatives_left_positives_right(self):
         """creates a new list with negative values on the left and positive values on the right. *THE LIST IS NOT SORTED*"""
         l1 = LinkedList()
@@ -245,7 +243,6 @@ class LinkedList:
             current = current.next
         return False
 
-    # 2t
     def count_nodes_greater_than(self, num):
         """counts the number of nodes with values higher than the given argument"""
         current = self.head
@@ -256,7 +253,6 @@ class LinkedList:
             current = current.next
         return count
 
-    # 2v
     def union(self, l2):
         """creates a new list, union(math) between the called list and the argument list"""
         current = self.head
