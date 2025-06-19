@@ -1,47 +1,73 @@
 class Queue:
-    def __init__(self):
+    def __init__(self, max_size=None):
+        """Initialize queue with optional maximum size limit"""
         self.items = []
         self.size = 0
+        self.max_size = max_size
 
     def enqueue(self, item):
-        """adds an item to the queue"""
+        """Adds an item to the queue"""
+        if self.max_size is not None and self.size >= self.max_size:
+            raise OverflowError("Queue is full")
         self.size = self.size + 1
         return self.items.append(item)
 
     def dequeue(self):
-        """removes and returns the first(right)item from the queue"""
-        if not self.is_empty():
-            self.size = self.size - 1
-            return self.items.pop(0)
+        """Removes and returns the first item from the queue"""
+        if self.is_empty():
+            raise IndexError("Cannot dequeue from empty queue")
+        self.size = self.size - 1
+        return self.items.pop(0)
 
     def is_empty(self):
-        """returns true if the queue is empty, false otherwise"""
+        """Returns true if the queue is empty, false otherwise"""
         return len(self.items) == 0
 
     def first(self):
-        """same sa dequeue except it doesnt remove the item"""
-        if not self.is_empty():
-            return self.items[0]
+        """Returns the first item without removing it (peek)"""
+        if self.is_empty():
+            raise IndexError("Cannot peek at empty queue")
+        return self.items[0]
 
     def get_queue(self):
-        """returns the items in the queue"""
-        return self.items
+        """Returns a copy of the items in the queue"""
+        return self.items.copy()
 
     def __len__(self):
-        """returns the size of the queue"""
+        """Returns the size of the queue"""
         return self.size
 
+    def clear(self):
+        """Removes all items from the queue"""
+        self.items = []
+        self.size = 0
 
-q = Queue()
-print(q.is_empty())
-q.enqueue("Wake up")
-q.enqueue("Have coffee")
-q.enqueue("Have a shower")
-q.enqueue("Get dress")
-q.enqueue("Go to breakfast")
-q.enqueue("Go to faculty")
+    def is_full(self):
+        """Returns true if queue has reached maximum capacity"""
+        if self.max_size is None:
+            return False
+        return self.size >= self.max_size
 
-print(q.get_queue())
+    def remaining_capacity(self):
+        """Returns remaining capacity (None if unlimited)"""
+        if self.max_size is None:
+            return None
+        return self.max_size - self.size
 
-print(q.dequeue())
-print(q.first())
+    def contains(self, item):
+        """Returns true if item is in the queue"""
+        return item in self.items
+
+    def __str__(self):
+        """String representation of the queue"""
+        return f"Queue({self.items})"
+
+    def __repr__(self):
+        """Detailed string representation"""
+        return f"Queue(items={self.items}, size={self.size}, max_size={self.max_size})"
+
+    def __eq__(self, other):
+        """Equality comparison with another queue"""
+        if not isinstance(other, Queue):
+            return False
+        return self.items == other.items and self.max_size == other.max_size
