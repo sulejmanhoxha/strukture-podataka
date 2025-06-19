@@ -9,11 +9,6 @@ class DoublyLinkedList:
     def __init__(self, head=None):
         self.head = head
 
-    # za listu koju hocemo da dodajemo i tail
-    # def __init__(self, head=None, tail=None):
-    #     self.head = head
-    #     self.tail = tail
-
     def print_list_2(self):
         """prints the list vertically"""
         current = self.head
@@ -30,12 +25,19 @@ class DoublyLinkedList:
                 string = string + str(current.value) + " ]"
             else:
                 string = string + str(current.value) + "   ⇄   "
-
             current = current.next
+
+        # Handle empty list case
+        if self.head is None:
+            string = string + "]"
+
         print(string)
 
     def print_list_reversed_2(self):
         """prints the list in reverse order vertically"""
+        if self.head is None:
+            return
+
         current = self.head
         while current.next:
             current = current.next
@@ -46,6 +48,10 @@ class DoublyLinkedList:
 
     def print_list_reversed(self):
         """print the list in reverse order in one line"""
+        if self.head is None:
+            print("Reversed list: [ ]")
+            return
+
         current = self.head
         while current.next:
             current = current.next
@@ -55,7 +61,6 @@ class DoublyLinkedList:
                 string = string + str(current.value) + " ]"
             else:
                 string = string + str(current.value) + "   ⇄   "
-
             current = current.prev
         print(string)
 
@@ -86,9 +91,10 @@ class DoublyLinkedList:
             return
         if self.head.next is None:
             self.head = None
+            return
 
         self.head = self.head.next
-        self.prev = None
+        self.head.prev = None
 
     def delete_last(self):
         """deletes the last element of the list"""
@@ -97,20 +103,24 @@ class DoublyLinkedList:
 
         if self.head.next is None:
             self.head = None
+            return
 
         current = self.head
         while current.next:
             current = current.next
 
-        current.prev = None
+        # Fix: properly disconnect the last node
         current.prev.next = None
 
     def get_middle_node(self):
         """returns the middle node of the list"""
+        if self.head is None:
+            return None
+
         current_1 = self.head
         current_2 = self.head
 
-        while current_1.next:
+        while current_1.next and current_1.next.next:
             current_1 = current_1.next.next
             current_2 = current_2.next
 
@@ -133,17 +143,18 @@ class DoublyLinkedList:
             return False
 
     def intersection(self, l2):
-        """returns a new list with only the nodes that have the same value on both lists the called list and the argument list"""
+        """returns a new list with only the nodes that have the same value on both lists"""
         current_1 = self.head
         l3 = DoublyLinkedList()
         while current_1:
             current_2 = l2.head
             while current_2:
                 if current_1.value == current_2.value:
-                    l3.append(current_1)
+                    l3.append(Node(current_1.value))
+                    break
                 current_2 = current_2.next
             current_1 = current_1.next
-        l3.print_list()
+        return l3
 
     def append_sort(self, n):
         """works only for the knjigja example or if we have dictionaries with key cijena"""
@@ -163,7 +174,17 @@ class DoublyLinkedList:
         current.next = n
         n.prev = current
 
+    def duzina(self):
+        """helper method to get length of the list"""
+        count = 0
+        current = self.head
+        while current:
+            count += 1
+            current = current.next
+        return count
+
     def izbaci(self, N):
+        """removes N nodes from the end of the list"""
         p = 0
         if N >= self.duzina():
             while self.head != None:
@@ -179,45 +200,57 @@ class DoublyLinkedList:
                     return
                 if self.head.next is None:
                     self.head = None
+                    return n + 1
                 current = self.head
                 while current.next:
                     current = current.next
                 current.prev.next = None
-                current.prev = None
                 n = n + 1
-
             return n
 
     def remove_duplicates(self):
-        current_1 = self.head
-        current_2 = self.head
+        """removes duplicate values from the list"""
+        if self.head is None:
+            return
 
-        while current_1.next:
-            while current_2.next:
-                if current_2.next.value == current_1.value:
-                    current_2.next = current_2.next.next
-                else:
-                    current_2 = current_2.next
-            current_1 = current_1.next
+        current_1 = self.head
+
+        while current_1 and current_1.next:
             current_2 = current_1
 
-    def remove_duplicates_une(self):
-        values = {}
+            while current_2.next:
+                if current_2.next.value == current_1.value:
+                    # Remove the duplicate node
+                    duplicate = current_2.next
+                    current_2.next = duplicate.next
+                    if duplicate.next:
+                        duplicate.next.prev = current_2
+                else:
+                    current_2 = current_2.next
 
+            current_1 = current_1.next
+
+    def remove_duplicates_une(self):
+        """removes duplicate values using a dictionary to track seen values"""
+        if self.head is None:
+            return
+
+        values = {}
         current = self.head
 
         while current:
-            if current.next is None:
-                if current.value not in values:
-                    return
-                else:
-                    current.prev.next = None
-                return
-
             if current.value not in values:
                 values[current.value] = current
+                current = current.next
             else:
-                current.prev.next = current.next
-                current.next.prev = current.prev
+                # Remove duplicate node
+                if current.prev:
+                    current.prev.next = current.next
+                else:
+                    # Current is head
+                    self.head = current.next
 
-            current = current.next
+                if current.next:
+                    current.next.prev = current.prev
+
+                current = current.next

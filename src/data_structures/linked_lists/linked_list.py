@@ -25,6 +25,8 @@ class LinkedList:
 
     def find_maximum_value(self):
         """returns the highest(maximum) value of the list"""
+        if not self.head:
+            return None
         current = self.head
         maksimum = current.value
         while current:
@@ -36,10 +38,14 @@ class LinkedList:
 
     def delete_node_with_max_value(self):
         """deletes the node with the highest value"""
-        self.delete_value(self.find_maximum_value())
+        max_val = self.find_maximum_value()
+        if max_val is not None:
+            self.delete_value(max_val)
 
     def find_minimum_value(self):
         """returns the lowest(minimum) value of the list"""
+        if not self.head:
+            return None
         current = self.head
         minimum = current.value
         while current:
@@ -50,7 +56,9 @@ class LinkedList:
 
     def delete_node_with_min_value(self):
         """deletes the node with the lowest(minimum) value"""
-        self.delete_value(self.find_minimum_value())
+        min_val = self.find_minimum_value()
+        if min_val is not None:
+            self.delete_value(min_val)
 
     def square_every_value(self):
         """squares the value of every node in the list"""
@@ -67,11 +75,15 @@ class LinkedList:
 
     def delete_last(self):
         """deletes the last node of the list"""
+        if not self.head:
+            return None
+        if not self.head.next:
+            self.head = None
+            return
         current = self.head
-        while current.next:
-            prev = current
+        while current.next and current.next.next:
             current = current.next
-        prev.next = None
+        current.next = None
 
     def remove_every_third_element(linked_list):
         """deletes every third element of the list"""
@@ -101,7 +113,7 @@ class LinkedList:
         return None
 
     def insert_on_position(self, new_element, position):
-        """nserts a node in the specified position"""
+        """inserts a node in the specified position"""
         counter = 1
         current = self.head
         if position > 1:
@@ -119,13 +131,17 @@ class LinkedList:
 
     def delete_value(self, value):
         """deletes a node if it's value is equal to the value parameter"""
+        if not self.head:
+            return
+
         current = self.head
         prev = None
-        while current.value != value and current.next:
+
+        while current and current.value != value:
             prev = current
             current = current.next
 
-        if current.value == value:
+        if current and current.value == value:
             if prev:
                 prev.next = current.next
             else:
@@ -133,6 +149,9 @@ class LinkedList:
 
     def delete_from_position(self, position):
         """deletes a value that is in the specified position"""
+        if not self.head or position < 1:
+            return None
+
         current = self.head
         prev = None
         counter = 1
@@ -141,6 +160,7 @@ class LinkedList:
             self.head = current.next
             current = None
             return
+
         while current and counter != position:
             prev = current
             current = current.next
@@ -196,6 +216,10 @@ class LinkedList:
 
     def concat(self, other):
         """concatenates/joins two lists"""
+        if not self.head:
+            self.head = other.head
+            return
+
         current = self.head
         while current.next:
             current = current.next
@@ -204,8 +228,11 @@ class LinkedList:
 
     def delete_every_second_node(self):
         """deletes every second node of the list. begins from the second node [5,3,4,9] - result: [5,4]"""
+        if not self.head:
+            return
+
         current = self.head
-        while current.next:
+        while current and current.next:
             if current.next.next is None:
                 current.next = None
                 break
@@ -215,24 +242,40 @@ class LinkedList:
         self.print_list()
 
     def negatives_left_positives_right(self):
-        """creates a new list with negative values on the left and positive values on the right. *THE LIST IS NOT SORTED*"""
-        l1 = LinkedList()
+        """rearranges the current list with negative values on the left and positive values on the right. *THE LIST IS NOT SORTED*"""
+        if not self.head:
+            return
+
+        # Create temporary lists for negatives, zero, and positives
+        negatives = []
+        positives = []
+        has_zero = False
+
+        # Collect values
         current = self.head
         while current:
             if current.value < 0:
-                l1.append(Node(current.value))
-            current = current.next
-        current = self.head
-
-        if self.check_if_exists(0):
-            l1.append(Node(0))
-
-        while current:
-            if current.value > 0:
-                l1.append(Node(current.value))
+                negatives.append(current.value)
+            elif current.value > 0:
+                positives.append(current.value)
+            else:
+                has_zero = True
             current = current.next
 
-        l1.print_list()
+        # Rebuild the list
+        self.head = None
+
+        # Add negatives first
+        for val in negatives:
+            self.append(Node(val))
+
+        # Add zero if it exists
+        if has_zero:
+            self.append(Node(0))
+
+        # Add positives last
+        for val in positives:
+            self.append(Node(val))
 
     def check_if_exists(self, value):
         """returns true if a value is found on the list, returns false otherwise"""
@@ -295,11 +338,11 @@ class LinkedList:
         return l3
 
     def squares_even_values(self):
-        """Returns a linked list made of only nodes that have even (tek) numbers and then squares them, from the called list"""
+        """Returns a linked list made of only nodes that have odd numbers and then squares them, from the called list"""
         lista2 = LinkedList()
         current = self.head
         while current:
-            if current.value % 2 == 1:
+            if current.value % 2 == 1:  # odd numbers
                 lista2.append(Node(current.value**2))
             current = current.next
         lista2.print_list()
@@ -318,7 +361,7 @@ class LinkedList:
             if current.next:
                 current = current.next.next
             else:
-                return lista2
+                break
         lista2.print_list()
         return lista2
 
