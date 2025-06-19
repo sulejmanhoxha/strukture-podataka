@@ -1,3 +1,6 @@
+from src.data_structures.stack_queue.queue import Queue
+
+
 class Node:
     def __init__(self, value):
         self.value = value
@@ -30,10 +33,9 @@ class BinaryTree:
             print("Data is already in the tree")
 
     def find(self, data):
-        is_found = False
         if self.root:
             is_found = self._find(data, self.root)
-            return bool(is_found)
+            return bool(is_found) if is_found else None
         else:
             return None
 
@@ -52,12 +54,12 @@ class BinaryTree:
             if current_node.right is None:
                 current_node.right = Node(value)
             else:
-                self._insert(value, current_node.right)
+                self._insert1(value, current_node.right)
         elif value["zarada"] < current_node.value["zarada"]:
             if current_node.left is None:
                 current_node.left = Node(value)
             else:
-                self._insert(value, current_node.left)
+                self._insert1(value, current_node.left)
         else:
             print("Vrijednost koju pokusavate da dodate vec postoji.")
 
@@ -283,41 +285,3 @@ class BinaryTree:
             return self.number_of_not_leaves(self.root.left) + self.number_of_not_leaves(self.root.right) + 1
         else:
             return 0
-
-
-# DFS
-# inorder : 1.left, 2.parent, right: shken ke ma i majti (left.left.left .....) masanej [↗ ↗ ↗ ↗]
-# preorder: 1.root ,left, right : kja qysh me root fillen me [↙ ↙ ↙ ↙] dmth. root edhe [↙ ↙ ↙ ↙]
-# postorder: 1. left , right, parent :   shken ke leaf ma i majti qi isht(left.left.left ......)   masanej [  ↘ ↖  ]
-# (\  \  \  \) . shken si \ vetem se fillen prej nelt posht, e njitet ke \ tjeter par prej posht nelt
-# BFS - LevelOrder shken rresht per rresht, prej majtas djathtas dmth komplet horizontal
-# bin_tree = BinaryTree(6)
-
-# bin_tree.insert(3)
-# bin_tree.insert(7)
-# bin_tree.insert(2)
-# bin_tree.insert(5)
-# bin_tree.insert(9)
-
-# print(bin_tree.print_tree("preorder"))
-# print(bin_tree.print_tree("postorder"))
-# print(bin_tree.print_tree("inorder"))
-# # print(bin_tree.print_tree("levelorder"))
-# print(bin_tree.find(10))
-# print(bin_tree.min().value)
-
-# bin_tree.delete_node(bin_tree.root, 7)
-# print(bin_tree.print_tree("preorder"))
-# print(bin_tree.size())
-# print(bin_tree.get_num_of_leaf())
-
-
-# print(bin_tree.preorder_print_2(bin_tree.root))
-
-# print(bin_tree.prebroji_cvororva(bin_tree.root))
-# print(bin_tree.sum_of_values(bin_tree.root))
-
-
-# print(bin_tree.prebroji_cvororva_koji_su_veci_od(bin_tree.root, 4))
-# print(bin_tree.prebroji_cvororva_koji_su_veci_od_i_manji_od(bin_tree.root, 4, 8))
-# print(bin_tree.range_count(bin_tree.root, 4, 8))
