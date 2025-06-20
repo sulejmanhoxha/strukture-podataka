@@ -8,8 +8,7 @@ class Node:
 class DoublyLinkedList:
     def __init__(self, head=None):
         self.head = head
-
-    # za listu koju hocemo da dodajemo i tail
+        
     # def __init__(self, head=None, tail=None):
     #     self.head = head
     #     self.tail = tail
